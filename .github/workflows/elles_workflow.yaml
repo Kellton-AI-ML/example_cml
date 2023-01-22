@@ -10,7 +10,7 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          run-as root pip install -r requirements.txt
+          sh -c "su root -c 'pip install -r requirements.txt'"
           pip freeze
           python train.py
           cat metrics.txt > report.md
